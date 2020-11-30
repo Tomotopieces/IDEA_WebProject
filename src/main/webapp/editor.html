@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="div1">
+        <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+    </div>
+
+    <button id="click">Click</button>
+
+    <script type="text/javascript" src="//unpkg.com/wangeditor/dist/wangEditor.min.js"></script>
+    <script type="text/javascript">
+        const E = window.wangEditor;
+        const editor = new E('#div1');
+        // 或者 const editor = new E( document.getElementById('div1') )
+        editor.create();
+
+        $(() => {
+            $('#click').on('click', () => {
+                $.ajax({
+                    type: "POST",
+                    url: "editor",
+                    data: 
+                    {
+                        "content": editor.txt.html(),
+                        "customValue": "WDNMD"
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

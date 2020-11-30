@@ -1,6 +1,7 @@
 package io.tomoto.main;
 
-import java.util.Arrays;
+import com.google.gson.Gson;
+import io.tomoto.entity.User;
 
 /**
  * @author Tomoto
@@ -9,6 +10,12 @@ import java.util.Arrays;
  */
 public class Main {
     public static void main(String[] args) {
-//        Arrays.asList(1, 2, 3, 4, 5).forEach(System.out::println);
+        User user = new User(1, "IzzelAliz", "HaiLuo", 19, "12345678901");
+
+        Gson gson = new Gson();
+        String str = gson.toJson(user);
+        System.out.println(str);
+
+        System.out.println(gson.fromJson(str, User.class));
     }
 }
